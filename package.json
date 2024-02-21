@@ -6,7 +6,6 @@
     "build": "rm -rf .next/cache/fetch-cache && next build",
     "postinstall": "prisma generate",
     "dev": "next dev",
-    "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
