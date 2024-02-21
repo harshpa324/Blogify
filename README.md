@@ -16,9 +16,9 @@ To run this project locally, follow these steps:
 
 Here are some screenshots of the project:
 
-1. ![Screenshot 1](/1.png)
-2. ![Screenshot 2](/2.png)
-3. ![Screenshot 3](/3.png)
-4. ![Screenshot 4](/4.png)
-5. ![Screenshot 5](/5.png)
+1. ![Screenshot 1](public/1.jpg)
+2. ![Screenshot 2](public/2.jpg)
+3. ![Screenshot 3](public/3.jpg)
+4. ![Screenshot 4](public/4.jpg)
+5. ![Screenshot 5](public/5.jpg)
 
