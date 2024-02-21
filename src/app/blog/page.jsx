@@ -1,5 +1,4 @@
 "use client"
-
 import { useEffect, useState } from 'react';
 import { useSession } from 'next-auth/react';
 import Link from 'next/link';
@@ -11,9 +10,22 @@ const PostsPage = () => {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const response = await fetch('/api/posts');
+        // Fetch posts for the logged-in user
+        const response = await fetch('/api/posts', {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            // Pass the user's access token as authorization
+            Authorization: `Bearer ${session.accessToken}`,
+          },
+        });
         const data = await response.json();
-        setPosts(data.posts);
+        
+        // Filter posts to display only those authored by the logged-in user
+        const userPosts = data.posts.filter(post => post.userEmail === session.user.email);
+        console.log(post.userEmail);
+        console.log(session.user.email);
+        setPosts(userPosts);
       } catch (error) {
         console.error('Error fetching posts:', error);
       }
