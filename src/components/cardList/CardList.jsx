@@ -5,30 +5,19 @@ import Image from "next/image";
 import Card from "@/components/card/card";
 
 const getData = async (page, cat) => {
-  try{
-     const res = await fetch(
-    `https://blogify-rosy.vercel.app/api/posts?page=${page}&cat=${cat || ""}`,
-     {
+  const res = await fetch(
+    `http://localhost:3000/api/posts?page=${page}&cat=${cat || ""}`,
+    {
       cache: "no-store",
-     }
-   );
+    }
+  );
 
-   if (!res.ok) {
+  if (!res.ok) {
     throw new Error("Failed");
-   }
+  }
 
   return res.json();
-} catch (e) {
-  if (e instanceof AggregateError) {
-    console.error("Aggregate error occurred:", e);
-    // Handle the aggregate error appropriately
-    console.error(e.errors); // Log individual errors aggregated in the AggregateError
-  } else {
-    console.error("Other error occurred:", e);
-    // Handle other types of errors
-  }
-}
-} ;
+};
 
 const CardList = async ({ page, cat }) => {
   const { posts, count } = await getData(page, cat);
