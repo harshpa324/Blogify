@@ -1,20 +1,54 @@
-import CardList from "@/components/cardList/CardList";
-import styles from "./blogPage.module.css";
-import Menu from "@/components/Menu/Menu";
+"use client"
 
-const BlogPage = ({ searchParams }) => {
-  const page = parseInt(searchParams.page) || 1;
-  const { cat } = searchParams;
+import { useEffect, useState } from 'react';
+import { useSession } from 'next-auth/react';
+import Link from 'next/link';
+
+const PostsPage = () => {
+  const [posts, setPosts] = useState([]);
+  const { data: session } = useSession();
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        const response = await fetch('/api/posts');
+        const data = await response.json();
+        setPosts(data.posts);
+      } catch (error) {
+        console.error('Error fetching posts:', error);
+      }
+    };
+
+    if (session) {
+      fetchPosts();
+    }
+  }, [session]);
 
   return (
-    <div className={styles.container}>
-      <h1 className={styles.title}>{cat} Blog</h1>
-      <div className={styles.content}>
-        <CardList page={page} cat={cat}/>
-        <Menu />
-      </div>
+    <div className="container mx-auto py-8">
+      <h1 className="text-3xl font-bold mb-4">Your Posts</h1>
+      {session ? (
+        <ul className="space-y-4">
+          {posts.length === 0 ? (
+            <p>No posts found.</p>
+          ) : (
+            posts.map((post) => (
+              <li
+                key={post.id}
+                className="border rounded-md p-4 shadow-md hover:shadow-lg transition duration-300"
+              >
+                <Link href={`/posts/${post.id}`}>
+                  <span className="text-blue-500 hover:underline">{post.title}</span>
+                </Link>
+              </li>
+            ))
+          )}
+        </ul>
+      ) : (
+        <p className="text-gray-600">Please sign in to view your posts.</p>
+      )}
     </div>
   );
 };
 
-export default BlogPage;
+export default PostsPage;
