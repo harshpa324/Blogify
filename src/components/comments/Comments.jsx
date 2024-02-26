@@ -24,7 +24,7 @@ const Comments = ({ postSlug }) => {
   const { status } = useSession();
 
   const { data, mutate, isLoading } = useSWR(
-    `https://blogify-rosy.vercel.app/api/comments?postSlug=${postSlug}`,
+    `https://blogify1.netlify.app/api/comments?postSlug=${postSlug}`,
     fetcher
   );
 
