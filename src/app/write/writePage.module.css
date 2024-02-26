@@ -15,7 +15,6 @@
     display: flex;
     gap: 20px;
     height: 700px;
-    position: relative;
   }
   
   .button,
