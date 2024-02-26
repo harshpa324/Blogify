@@ -5,7 +5,7 @@ import Comments from "@/components/comments/Comments";
 
 
 const getData = async (slug) => {
-  const res = await fetch(`https://blogify1.netlify.app/api/posts/${slug}`, {
+  const res = await fetch(`https://blogify-rosy.vercel.app/api/posts/${slug}`, {
     cache: "no-store",
   });
 
