@@ -59,7 +59,16 @@
   }
   
   .textArea {
+    padding: 50px;
+    font-size: 32px;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    color: var(--textColor);
     width: 100%;
+  }
+  .textArea::placeholder{
+    color: #b3b3b1;
   }
   
   .publish{
