@@ -134,7 +134,7 @@ const WritePage = () => {
           </div>
         )}
         <ReactQuill
-          className={styles.textArea}
+          
           theme="bubble"
           value={value}
           onChange={setValue}
