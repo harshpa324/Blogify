@@ -15,7 +15,7 @@ import {
 import { app } from "@/utils/firebase";
 import dynamic from "next/dynamic"
 
-const WritePage = () => {
+const WritePage = (props) => {
   const { status } = useSession();
   const ReactQuill = dynamic(()=> import('react-quill'),{ssr: false});
   const router = useRouter();
