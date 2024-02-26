@@ -8,7 +8,7 @@
     margin-bottom: 50px;
     padding: 10px 20px;
     margin-left: 50px;
-    width: 50%;
+    width: max-content;
   }
   
   .editor {
@@ -41,7 +41,7 @@
     background-color: var(--bg);
     position: absolute;
     z-index: 500;
-    width: 50%;
+    width: max-content;
     left: 50px;
   }
   
