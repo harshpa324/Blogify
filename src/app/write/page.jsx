@@ -13,7 +13,7 @@ import {
   getDownloadURL,
 } from "firebase/storage";
 import { app } from "@/utils/firebase";
-
+import dynamic from "next/dynamic"
 
 const WritePage = () => {
   const { status } = useSession();
