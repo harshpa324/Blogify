@@ -15,7 +15,7 @@ import {
 import { app } from "@/utils/firebase";
 import dynamic from "next/dynamic"
 
-const WritePage = (props) => {
+const WritePage = () => {
   const { status } = useSession();
   const ReactQuill = dynamic(()=> import('react-quill'),{ssr: false});
   const router = useRouter();
@@ -26,8 +26,6 @@ const WritePage = (props) => {
   const [value, setValue] = useState("");
   const [title, setTitle] = useState("");
   const [catSlug, setCatSlug] = useState("");
-  const { getFieldDecorator, validateFields, setFieldsValue } = props.form;
-
 
   useEffect(() => {
     const storage = getStorage(app);
@@ -97,12 +95,6 @@ const WritePage = (props) => {
       router.push(`/posts/${data.slug}`);
     }
   };
-  const onchangetext = (text) => {
-    console.log("called");
-    text = text !== "<p><br></p>" ? text : "";
-    setFieldsValue({ input: text });
-    setValue(text);
-  };
 
   return (
     <div className={styles.container}>
@@ -144,8 +136,8 @@ const WritePage = (props) => {
         <ReactQuill
           className={styles.textArea}
           theme="bubble"
-          defaultValue={value}
-          onChange={onchangetext}
+          value={value}
+          onChange={setValue}
           placeholder="Tell your story..."
         />
       </div>
