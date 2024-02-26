@@ -134,7 +134,7 @@ const WritePage = () => {
           </div>
         )}
         <input
-        type="textArea"
+        type="textarea"
         placeholder="Tell your story....."
         className={styles.textArea}
         onChange={(e) => setValue(e.target.value)}
