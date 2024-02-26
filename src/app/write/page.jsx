@@ -26,6 +26,8 @@ const WritePage = () => {
   const [value, setValue] = useState("");
   const [title, setTitle] = useState("");
   const [catSlug, setCatSlug] = useState("");
+  const { getFieldDecorator, validateFields, setFieldsValue } = props.form;
+
 
   useEffect(() => {
     const storage = getStorage(app);
@@ -95,6 +97,12 @@ const WritePage = () => {
       router.push(`/posts/${data.slug}`);
     }
   };
+  const onchangetext = (text) => {
+    console.log("called");
+    text = text !== "<p><br></p>" ? text : "";
+    setFieldsValue({ input: text });
+    setValue(text);
+  };
 
   return (
     <div className={styles.container}>
@@ -133,11 +141,11 @@ const WritePage = () => {
             
           </div>
         )}
-        <input
+        <ReactQuill
           className={styles.textArea}
           theme="bubble"
-          value={value}
-          onChange={setValue}
+          defaultValue={value}
+          onChange={onchangetext}
           placeholder="Tell your story..."
         />
       </div>
