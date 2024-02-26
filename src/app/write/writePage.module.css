@@ -13,7 +13,7 @@
 
 .editor {
   display: flex;
-  flex-direction: column; /* Change to column layout */
+  flex-direction: column;
   gap: 20px;
   height: 700px; /* Adjust height if needed */
 }
@@ -64,6 +64,8 @@
   background-color: transparent;
   color: var(--textColor);
   width: 100%;
+  max-height: 300px; /* Set the maximum height */
+  overflow-y: auto; /* Allow vertical scrolling */
 }
 
 .textArea::placeholder {
