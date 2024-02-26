@@ -133,7 +133,7 @@ const WritePage = () => {
             
           </div>
         )}
-        <ReactQuill
+        <input
           className={styles.textArea}
           theme="bubble"
           value={value}
